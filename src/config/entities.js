@@ -1,0 +1,8 @@
+export const ENTITY_AREAS = "areas"
+export const ENTITY_COLORS = "colors"
+export const ENTITY_TITLES = "titles"
+export const ENTITY_CLIENTS = "clients"
+export const ENTITY_OPERATORS = "operators"
+export const ENTITY_OCCUPATIONS = "occupations"
+export const ENTITY_TURNS = "turns"
+export const ENTITY_PRODUCTS = "products"

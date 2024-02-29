@@ -1,0 +1,116 @@
+.navbar-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.navbar-content {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+  background: var(--color-neutral-background-1);
+  min-height: var(--navbar-space-content);
+  z-index: 9;
+}
+
+.navbar-content--area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--navbar-width);
+  padding: 0px 32px;
+  box-sizing: border-box;
+}
+
+.navbar-content--logo {
+  display: flex;
+  align-items: center;
+  width: auto;
+}
+
+.navbar-content--logout__option {
+  display: flex;
+  gap: 16px;
+}
+
+.navbar-content--logo__image {
+  width: 36px;
+  height: 36px;
+}
+
+.navbar-content--logo__title {
+  margin-left: 12px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  line-height: 1px;
+}
+
+.navbar-content--logout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  user-select: none;
+  cursor: pointer;
+  padding: 4px 16px 4px 4px;
+  background: #0e0e0e;
+  border-radius: 24px;
+}
+
+.navbar-content--logout:hover .navbar-content--logout__text {
+  border-bottom: 1px dotted var(--color-primary-dark);
+}
+
+.navbar-content--logout__text {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-primary-dark);
+}
+
+.navbar-content--logout__image {
+  width: 22px;
+  height: 22px;
+}
+
+.navbar-content--text {
+  display: flex;
+  gap: 76px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.navbar-content--text__disc {
+  position: relative;
+}
+
+.navbar-content--text__disc::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #050505;
+  top: 0;
+  bottom: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+  left: -24px;
+  z-index: 9;
+}
+
+@media(max-width: 1400px) {
+  .navbar-content {
+    width: 100%;
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+}
