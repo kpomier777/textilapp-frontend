@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { setThemeFlow } from "@/redux/actionCreators"
-import HeroProductsPreview from "./components/HeroProductsPreview"
+import HeroProductsML from "./components/HeroProductsML"
 import QuickAccess from "./components/QuickAccess"
 import { dataTest } from "@/config/dataTest"
 import QuickLinks from "./components/QuickLinks"
@@ -24,7 +24,7 @@ const DashboardPage = () => {
         </div>
         <QuickLinks />
         <QuickAccess />
-        <HeroProductsPreview data={dataTest} />
+        <HeroProductsML data={dataTest} />
       </div>
     </>
   )

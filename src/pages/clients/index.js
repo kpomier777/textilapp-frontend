@@ -9,6 +9,7 @@ import { THEME_COLOR_CLIENTS } from "@/config/theme-color"
 
 const ClientList = lazy(() => import("./components/ClientList"))
 const ClientForm = lazy(() => import("./components/ClientForm"))
+const ClientView = lazy(() => import("./components/ClientView"))
 
 const ClientsPage = () => {
   const dispatch = useDispatch()
@@ -43,6 +44,14 @@ const ClientsPage = () => {
           element={
             <SuspenseComponent>
               <ClientForm />
+            </SuspenseComponent>
+          }
+        ></Route>
+        <Route
+          path="view/:id"
+          element={
+            <SuspenseComponent>
+              <ClientView edit />
             </SuspenseComponent>
           }
         ></Route>

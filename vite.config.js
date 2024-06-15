@@ -46,7 +46,7 @@ export default defineConfig({
 
   // End workaround
   server: {
-    port: 3000,
+    port: 3005,
     host: 'localhost',
     open: true,
   },

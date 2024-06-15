@@ -9,6 +9,7 @@ import { THEME_COLOR_OPERATORS } from "@/config/theme-color"
 
 const OperatorList = lazy(() => import("./components/OperatorList"))
 const OperatorForm = lazy(() => import("./components/OperatorForm"))
+const OperatorView = lazy(() => import("./components/OperatorView"))
 
 const TurnList = lazy(() => import("./components/turns/TurnList"))
 const TurnForm = lazy(() => import("./components/turns/TurnForm"))
@@ -57,6 +58,14 @@ const OperatorsPage = () => {
           element={
             <SuspenseComponent>
               <OperatorForm />
+            </SuspenseComponent>
+          }
+        ></Route>
+        <Route
+          path="view/:id"
+          element={
+            <SuspenseComponent>
+              <OperatorView />
             </SuspenseComponent>
           }
         ></Route>

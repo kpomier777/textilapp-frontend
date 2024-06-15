@@ -39,8 +39,9 @@ export default function LoginForm() {
           toast.success(rawResponse.message)
           const userAuthUpdate = {
             logged: true,
-            userId: rawResponse.data.id,
-            username: rawResponse.data.username,
+            userId: rawResponse.data.userId,
+            userRol: rawResponse.data.userRol,
+            userName: rawResponse.data.userName,
             token: rawResponse.data.token,
           }
           dispatch(setUserAuth(userAuthUpdate))

@@ -9,9 +9,7 @@ import { THEME_COLOR_PRODUCTS } from "@/config/theme-color"
 
 const ProductList = lazy(() => import("./components/ProductList"))
 const ProductForm = lazy(() => import("./components/ProductForm"))
-
-const AreaList = lazy(() => import("./components/areas/AreaList"))
-const AreaForm = lazy(() => import("./components/areas/AreaForm"))
+const ProductView = lazy(() => import("./components/ProductView"))
 
 const ColorList = lazy(() => import("./components/colors/ColorList"))
 const ColorForm = lazy(() => import("./components/colors/ColorForm"))
@@ -55,29 +53,11 @@ const ProductsPage = () => {
             </SuspenseComponent>
           }
         ></Route>
-
-        {/* Areas route */}
         <Route
-          path="areas"
+          path="view/:id"
           element={
             <SuspenseComponent>
-              <AreaList />
-            </SuspenseComponent>
-          }
-        ></Route>
-        <Route
-          path="areas/:id"
-          element={
-            <SuspenseComponent>
-              <AreaForm edit />
-            </SuspenseComponent>
-          }
-        ></Route>
-        <Route
-          path="areas/nuevo"
-          element={
-            <SuspenseComponent>
-              <AreaForm />
+              <ProductView />
             </SuspenseComponent>
           }
         ></Route>

@@ -17,8 +17,9 @@ const RouterApp = () => {
       dispatch(
         setUserAuth({
           logged: userLocal.logged,
-          userId: userLocal.id,
-          username: userLocal.username,
+          userId: userLocal.userId,
+          userName: userLocal.userName,
+          userRol: userLocal.userRol,
           token: userLocal.token,
         })
       )

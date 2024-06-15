@@ -52,7 +52,7 @@ export default function ColorForm({ edit }) {
             return
           }
         }
-        throw new Error(response.message)
+        throw new Error(data.message)
       },
       (error) => {
         toast.error(error.message)
@@ -83,7 +83,7 @@ export default function ColorForm({ edit }) {
             return
           }
         }
-        throw new Error(response.message)
+        throw new Error(data.message)
       },
       (error) => {
         toast.error(error.message)
@@ -118,7 +118,7 @@ export default function ColorForm({ edit }) {
             return
           }
         }
-        throw new Error(response.message)
+        throw new Error(data.message)
       },
       (error) => {
         toast.error(error.message)
@@ -179,7 +179,7 @@ export default function ColorForm({ edit }) {
         </div>
         <form
           onSubmit={onSubmit(handleSubmit)}
-          className="flex flex-col gap-4 w-[300px]"
+          className="flex flex-col gap-4 w-[400px]"
         >
           <div className="flex flex-col">
             <label>

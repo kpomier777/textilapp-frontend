@@ -2,8 +2,8 @@ import { ResponsiveLine } from "@nivo/line"
 import PropTypes from "prop-types"
 
 const HeroProductsPreview = ({ data }) => (
-  <div className="w-full h-96 py-8 px-8 shadow-lg bg-black/30 rounded-3xl">
-    <h1 className="font-dmSans font-bold text-3xl">Resumen Producción</h1>
+  <div className="w-[95%] h-96 pb-8">
+    <h1 className="font-dmSans font-bold text-3xl">Estimacion de Producción</h1>
     <ResponsiveLine
       data={data}
       margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
@@ -53,7 +53,7 @@ const HeroProductsPreview = ({ data }) => (
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: "transportation",
+        legend: "Meses",
         legendOffset: 36,
         legendPosition: "middle",
       }}
@@ -61,7 +61,7 @@ const HeroProductsPreview = ({ data }) => (
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: "count",
+        legend: "Productos",
         legendOffset: -40,
         legendPosition: "middle",
       }}

@@ -49,7 +49,7 @@ export default function TitleInputSelect({ register, errors, defaultValue }) {
   const defaultItem = defaultValue || ""
 
   return (
-    <div className="flex flex-col h">
+    <div className="flex flex-col">
       <label>
         Titulo: <span className="text-rose-700">*</span>
       </label>
@@ -71,7 +71,7 @@ export default function TitleInputSelect({ register, errors, defaultValue }) {
               defaultValue={defaultItem}
               defaultSelectedOptions={selectedList}
               listbox={{
-                className: "h-40",
+                className: "h-36",
               }}
               {...register("titleSelected", {
                 required: "Elija un titulo",
@@ -81,10 +81,10 @@ export default function TitleInputSelect({ register, errors, defaultValue }) {
               {list.map((item) => (
                 <Option
                   key={item.id}
-                  text={`${item.id} - ${item.name}`}
-                  value={`${item.id} - ${item.name}`}
+                  text={`${item.id} - ${item.cod_title} ${item.name}`}
+                  value={`${item.id} - ${item.cod_title} ${item.name}`}
                 >
-                  {item.id} - {item.name}
+                  {item.cod_title}
                 </Option>
               ))}
             </ComboBoxFluent>

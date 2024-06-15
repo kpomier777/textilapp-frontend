@@ -86,7 +86,7 @@ export default function OccupationForm({ edit }) {
             return
           }
         }
-        throw new Error(response.message)
+        throw new Error(data.message)
       },
       (error) => {
         toast.error(error.message)
@@ -119,7 +119,7 @@ export default function OccupationForm({ edit }) {
             return
           }
         }
-        throw new Error(response.message)
+        throw new Error(data.message)
       },
       (error) => {
         toast.error(error.message)

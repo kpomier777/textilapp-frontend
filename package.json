@@ -1,6 +1,6 @@
 {
   "name": "textilapp-frontend",
-  "author": "Kevin Pomier Salas",
+  "author": "Kevin Pomier",
   "private": true,
   "version": "0.0.1",
   "type": "module",
@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "@fluentui/react-components": "^9.34.1",
+    "@nivo/bar": "^0.87.0",
+    "@nivo/bump": "^0.87.0",
     "@nivo/line": "^0.84.0",
     "axios": "^1.5.0",
     "framer-motion": "^10.16.2",

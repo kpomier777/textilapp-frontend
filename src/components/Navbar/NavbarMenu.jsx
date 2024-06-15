@@ -1,7 +1,9 @@
 /* eslint-disable react/no-array-index-key */
 import React, { Fragment } from "react"
+import PropTypes from "prop-types"
 import styled from "styled-components"
 import { NavLink, useLocation } from "react-router-dom"
+import { useSelector } from "react-redux"
 import MenuList from "@/config/menu-list"
 import IconArrowRight from "@/assets/images/menu/icon-arrow-right.svg"
 
@@ -61,37 +63,63 @@ const NavbarMenuLinkChildren = styled.div`
   padding-left: 16px;
 `
 
+export const UserEnabledToView = ({ access, rol, children }) => (
+  <>{access?.includes(rol) && <>{children}</>}</>
+)
+UserEnabledToView.propTypes = {
+  access: PropTypes.arrayOf(PropTypes.string).isRequired,
+  rol: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
+}
+
 const NavbarMenu = () => {
+  const userAuth = useSelector((state) => state.userAuth)
   const location = useLocation()
+
   return (
     <NavbarMenuWrapper>
       <NavbarMenuContent>
         {MenuList.map((itemMenu, index) => (
-          <Fragment key={`menuLink${index}`}>
-            <NavbarMenuLink to={itemMenu.path}>
-              <NavbarMenuLinkContent>
-                {itemMenu.image}
-                <span>{itemMenu.label}</span>
-              </NavbarMenuLinkContent>
-              {itemMenu.path === location.pathname && (
-                <img src={IconArrowRight} alt="Flecha derecha" />
+          <UserEnabledToView
+            key={`menuLink${index}`}
+            access={itemMenu.access}
+            rol={userAuth.userRol}
+          >
+            <>
+              <NavbarMenuLink to={itemMenu.path}>
+                <NavbarMenuLinkContent>
+                  {itemMenu.image}
+                  <span>{itemMenu.label}</span>
+                </NavbarMenuLinkContent>
+                {itemMenu.path === location.pathname && (
+                  <img src={IconArrowRight} alt="Flecha derecha" />
+                )}
+              </NavbarMenuLink>
+              {itemMenu?.hasChildren && (
+                <NavbarMenuLinkChildren className="menu-children">
+                  {itemMenu.children.map((subItem, subIndex) => (
+                    <UserEnabledToView
+                      key={`menuLinkChildren${subIndex}`}
+                      access={subItem.access}
+                      rol={userAuth.userRol}
+                    >
+                      <>
+                        <NavbarMenuLink to={`${itemMenu.path}/${subItem.path}`}>
+                          <NavbarMenuLinkContent>
+                            <span>{subItem.label}</span>
+                          </NavbarMenuLinkContent>
+                          <img src={IconArrowRight} alt="Flecha derecha" />
+                        </NavbarMenuLink>
+                      </>
+                    </UserEnabledToView>
+                  ))}
+                </NavbarMenuLinkChildren>
               )}
-            </NavbarMenuLink>
-            {itemMenu?.hasChildren && (
-              <NavbarMenuLinkChildren className="menu-children">
-                {itemMenu.children.map((subItem, subIndex) => (
-                  <Fragment key={`menuLinkChildren${subIndex}`}>
-                    <NavbarMenuLink to={`${itemMenu.path}/${subItem.path}`}>
-                      <NavbarMenuLinkContent>
-                        <span>{subItem.label}</span>
-                      </NavbarMenuLinkContent>
-                      <img src={IconArrowRight} alt="Flecha derecha" />
-                    </NavbarMenuLink>
-                  </Fragment>
-                ))}
-              </NavbarMenuLinkChildren>
-            )}
-          </Fragment>
+            </>
+          </UserEnabledToView>
         ))}
       </NavbarMenuContent>
     </NavbarMenuWrapper>

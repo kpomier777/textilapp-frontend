@@ -27,6 +27,19 @@ const TextilService = {
       .catch(error)
       .finally(end)
   },
+  getML: (success, error, end) => {
+    TextilService.controller = new AbortController()
+    axiosMiddleware
+      .request({
+        url: `${HTTP_SERVICE}/${TextilService.entity}`,
+        method: "GET",
+        headers: TextilService.headers,
+        signal: TextilService.controller?.signal,
+      })
+      .then(success)
+      .catch(error)
+      .finally(end)
+  },
   getOne: (id, success, error, end) => {
     TextilService.controller = new AbortController()
     axiosMiddleware

@@ -1,5 +1,12 @@
 {
   "tabWidth": 2,
   "semi": false,
-  "endOfLine": "auto"
+  "endOfLine": "auto",
+  "prettier/prettier": [
+    "error",
+    {
+      "singleQuote": true,
+      "parser": "flow"
+    }
+  ]
 }

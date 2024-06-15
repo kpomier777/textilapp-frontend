@@ -41,16 +41,18 @@ export default function TitleForm({ edit }) {
         if (data) {
           if (data?.status) {
             const result = data?.data
+            setValue("codTitle", result?.cod_title)
             setValue("nameTitle", result?.name)
             setValue("descriptionTitle", result?.description)
             setWaitData({
+              codTitle: result?.cod_title,
               nameTitle: result?.name,
               descriptionTitle: result?.description,
             })
             return
           }
         }
-        throw new Error(response.message)
+        throw new Error(data.message)
       },
       (error) => {
         toast.error(error.message)
@@ -58,9 +60,10 @@ export default function TitleForm({ edit }) {
     )
   }
 
-  const httpCreate = ({ nameTitle, descriptionTitle }) => {
+  const httpCreate = ({ codTitle, nameTitle, descriptionTitle }) => {
     setIsLoading(true)
     const payload = {
+      cod_title: codTitle,
       name: nameTitle,
       description: descriptionTitle,
     }
@@ -80,7 +83,7 @@ export default function TitleForm({ edit }) {
             return
           }
         }
-        throw new Error(response.message)
+        throw new Error(data.message)
       },
       (error) => {
         toast.error(error.message)
@@ -91,10 +94,11 @@ export default function TitleForm({ edit }) {
     )
   }
 
-  const httpUpdate = ({ nameTitle, descriptionTitle }) => {
+  const httpUpdate = ({ codTitle, nameTitle, descriptionTitle }) => {
     setIsLoading(true)
     const payload = {
       id: params?.id,
+      cod_title: codTitle,
       name: nameTitle,
       description: descriptionTitle,
     }
@@ -114,7 +118,7 @@ export default function TitleForm({ edit }) {
             return
           }
         }
-        throw new Error(response.message)
+        throw new Error(data.message)
       },
       (error) => {
         toast.error(error.message)
@@ -125,11 +129,11 @@ export default function TitleForm({ edit }) {
     )
   }
 
-  const handleSubmit = async ({ nameTitle, descriptionTitle }) => {
+  const handleSubmit = async ({ codTitle, nameTitle, descriptionTitle }) => {
     if (edit) {
-      httpUpdate({ nameTitle, descriptionTitle })
+      httpUpdate({ codTitle, nameTitle, descriptionTitle })
     } else {
-      httpCreate({ nameTitle, descriptionTitle })
+      httpCreate({ codTitle, nameTitle, descriptionTitle })
     }
   }
 
@@ -175,16 +179,40 @@ export default function TitleForm({ edit }) {
         </div>
         <form
           onSubmit={onSubmit(handleSubmit)}
-          className="flex flex-col gap-4 w-[300px]"
+          className="flex flex-col gap-4 w-[400px]"
         >
           <div className="flex flex-col">
             <label>
-              Nombre del Color <span className="text-rose-700">*</span>
+              Código titulo: <span className="text-rose-700">*</span>
+            </label>
+            <span className="relative text-sm text-white/50 py-2">
+              (El código debe tener el siguiente formato: 1/2)
+            </span>
+            <InputForm
+              defaultValue={waitData?.codTitle || ""}
+              {...register("codTitle", {
+                required: "Ingrese un código al titulo",
+                pattern: {
+                  value: /^\d+\/\d+$/gm,
+                  message:
+                    "Formato incorrecto: debe ser un número quebrado 1/2 o 4/10",
+                },
+              })}
+            />
+            {errors.codTitle && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.codTitle.message}
+              </p>
+            )}
+          </div>
+          <div className="flex flex-col">
+            <label>
+              Nombre titulo: <span className="text-rose-700">*</span>
             </label>
             <InputForm
               defaultValue={waitData?.nameTitle || ""}
               {...register("nameTitle", {
-                required: "Ingrese un nombre al color",
+                required: "Ingrese un nombre al titulo",
               })}
             />
             {errors.nameTitle && (
@@ -195,7 +223,7 @@ export default function TitleForm({ edit }) {
           </div>
           <div className="flex flex-col">
             <label>
-              Descripción <span className="text-rose-700">*</span>
+              Descripción: <span className="text-rose-700">*</span>
             </label>
             <TextareaForm
               defaultValue={waitData?.descriptionTitle || ""}

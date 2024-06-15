@@ -7,12 +7,6 @@ const QuickLinksProduct = () => (
       <ThunderIcon size={20} color="#d5af63" />
     </div>
     <NavLink
-      to="./areas/nuevo"
-      className="py-2 px-3 rounded-lg text-[#b2d563] hover:bg-[#b2d563]/20"
-    >
-      /Nueva_Area
-    </NavLink>
-    <NavLink
       to="./colores/nuevo"
       className="py-2 px-3 rounded-lg text-[#b2d563] hover:bg-[#b2d563]/20"
     >

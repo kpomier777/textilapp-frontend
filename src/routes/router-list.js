@@ -9,8 +9,11 @@ import NotmatchPage from "@/pages/notmatch"
 
 const DashboardPage = lazy(() => import("@/pages/dashboard"))
 const ClientsPage = lazy(() => import("@/pages/clients"))
+const ProductionPage = lazy(() => import("@/pages/production"))
 const ProductsPage = lazy(() => import("@/pages/products"))
 const OperatorsPage = lazy(() => import("@/pages/operators"))
+const ConfigurationsPage = lazy(() => import("@/pages/configuration"))
+const HistorialPage = lazy(() => import("@/pages/historial"))
 
 const RouterList = () => {
   const { logged } = useSelector((state) => state.userAuth)
@@ -30,6 +33,14 @@ const RouterList = () => {
         path="/clientes/*"
         element={<AuthControl logged={logged} element={ClientsPage} />}
       />
+
+      {/* ProductionPage route */}
+      <Route
+        exact
+        path="/produccion/*"
+        element={<AuthControl logged={logged} element={ProductionPage} />}
+      />
+
       {/* ProductsPage route */}
       <Route
         exact
@@ -42,6 +53,20 @@ const RouterList = () => {
         exact
         path="/operadores/*"
         element={<AuthControl logged={logged} element={OperatorsPage} />}
+      />
+
+      {/* ConfigurationPage route */}
+      <Route
+        exact
+        path="/configuracion/*"
+        element={<AuthControl logged={logged} element={ConfigurationsPage} />}
+      />
+
+      {/* HistorialPage route */}
+      <Route
+        exact
+        path="/historial/*"
+        element={<AuthControl logged={logged} element={HistorialPage} />}
       />
 
       {/* Logout route */}

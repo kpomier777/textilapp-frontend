@@ -49,7 +49,7 @@ export default function ColorInputSelect({ register, errors, defaultValue }) {
   const defaultItem = defaultValue || ""
 
   return (
-    <div className="flex flex-col h">
+    <div className="flex flex-col">
       <label>
         Color: <span className="text-rose-700">*</span>
       </label>
@@ -71,7 +71,7 @@ export default function ColorInputSelect({ register, errors, defaultValue }) {
               defaultValue={defaultItem}
               defaultSelectedOptions={selectedList}
               listbox={{
-                className: "h-40",
+                className: "h-36",
               }}
               {...register("colorSelected", {
                 required: "Elija un color",
@@ -84,7 +84,7 @@ export default function ColorInputSelect({ register, errors, defaultValue }) {
                   text={`${item.id} - ${item.name}`}
                   value={`${item.id} - ${item.name}`}
                 >
-                  {item.id} - {item.name}
+                  {item.name}
                 </Option>
               ))}
             </ComboBoxFluent>

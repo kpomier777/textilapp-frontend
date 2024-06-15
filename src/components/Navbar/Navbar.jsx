@@ -53,8 +53,8 @@ const Navbar = () => {
               <Menu>
                 <MenuTrigger disableButtonEnhancement>
                   <Persona
-                    name="Kevin"
-                    secondaryText="Disponible"
+                    name={userAuth.userName}
+                    secondaryText={userAuth.userRol}
                     presence={{ status: "available" }}
                     avatar={{ color: "colorful" }}
                   />
@@ -63,7 +63,9 @@ const Navbar = () => {
                 <MenuPopover>
                   <MenuList>
                     <MenuItem>Perfil </MenuItem>
-                    <MenuItem>Historial</MenuItem>
+                    <MenuItem>
+                      <NavLinkStyled to="/historial">Historial</NavLinkStyled>
+                    </MenuItem>
                     <MenuItem>
                       <NavLinkStyled to="/logout">Cerrar Sesión</NavLinkStyled>
                     </MenuItem>

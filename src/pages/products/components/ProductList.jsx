@@ -9,8 +9,7 @@ import {
   EditRegular,
   DeleteRegular,
   Cube48Regular,
-  Box24Regular,
-  ArrowBetweenDown24Regular,
+  DocumentPageNumber24Regular,
 } from "@fluentui/react-icons"
 import {
   Label,
@@ -58,10 +57,12 @@ import QuickLinksProduct from "./QuickLinksProduct"
 
 const columns = [
   { columnKey: "productId", label: "#" },
+  { columnKey: "productLote", label: "Lote" },
   { columnKey: "productName", label: "Nombre" },
-  { columnKey: "productTotal", label: "Peso Neto (kg)" },
-  { columnKey: "productLess", label: "Peso Faltante (kg)" },
-  { columnKey: "productArea", label: "Area" },
+  { columnKey: "productKilosNeto", label: "Peso Neto [kg]" },
+  { columnKey: "productKilosUsed", label: "Peso Usado [kg]" },
+  { columnKey: "productKilosEnabled", label: "Peso Disponible [kg]" },
+  { columnKey: "productUsageCounter", label: "Lote Solicitado" },
   { columnKey: "productColor", label: "Color" },
   { columnKey: "productTitulo", label: "Titulo" },
   { columnKey: "action", label: "Acciones" },
@@ -341,30 +342,40 @@ export default function ProductList() {
                           <TableCellLayout>{item.id}</TableCellLayout>
                         </TableCell>
                         <TableCell>
+                          <TableCellLayout
+                            media={<DocumentPageNumber24Regular />}
+                          >
+                            {item.lote}
+                          </TableCellLayout>
+                        </TableCell>
+                        <TableCell>
                           <TableCellLayout>{item.name}</TableCellLayout>
                         </TableCell>
                         <TableCell>
-                          <TableCellLayout
-                            media={
-                              <Box24Regular color="rgba(178, 213, 99, 0.4)" />
-                            }
-                          >{`${item.weight_total} kg`}</TableCellLayout>
+                          <TableCellLayout>{`${item.kilos_neto}`}</TableCellLayout>
                         </TableCell>
                         <TableCell>
-                          <TableCellLayout
-                            media={
-                              <ArrowBetweenDown24Regular color="rgba(213, 114, 99, 0.4)" />
-                            }
-                          >{`${item.weight_less} kg`}</TableCellLayout>
+                          <TableCellLayout>{`${item.kilos_used}`}</TableCellLayout>
                         </TableCell>
                         <TableCell>
-                          <TableCellLayout>{item.areaName}</TableCellLayout>
+                          <TableCellLayout>{`${Number(
+                            +item.kilos_neto - +item.kilos_used
+                          ).toFixed(2)}`}</TableCellLayout>
                         </TableCell>
                         <TableCell>
-                          <TableCellLayout>{item.colorName}</TableCellLayout>
+                          <TableCellLayout>
+                            {`${item.usage_counter}`}
+                          </TableCellLayout>
                         </TableCell>
                         <TableCell>
-                          <TableCellLayout>{item.titleName}</TableCellLayout>
+                          <TableCellLayout>
+                            ({item.colorCod}) {item.colorName}
+                          </TableCellLayout>
+                        </TableCell>
+                        <TableCell>
+                          <TableCellLayout>
+                            ({item.titleCod}) {item.titleName}
+                          </TableCellLayout>
                         </TableCell>
                         <TableCell>
                           <TableCellLayout>

@@ -48,14 +48,14 @@ export default function ClientForm({ edit }) {
             setValue("firstNameClient", result?.first_name)
             setValue("lastNameClient", result?.last_name)
             setWaitData({
-              codClient: result?.cod_color,
-              firstNameClient: result?.name,
-              lastNameClient: result?.description,
+              codClient: result?.cod_client,
+              firstNameClient: result?.first_name,
+              lastNameClient: result?.last_name,
             })
             return
           }
         }
-        throw new Error(response.message)
+        throw new Error(data.message)
       },
       (error) => {
         toast.error(error.message)
@@ -86,7 +86,7 @@ export default function ClientForm({ edit }) {
             return
           }
         }
-        throw new Error(response.message)
+        throw new Error(data.message)
       },
       (error) => {
         toast.error(error.message)
@@ -121,7 +121,7 @@ export default function ClientForm({ edit }) {
             return
           }
         }
-        throw new Error(response.message)
+        throw new Error(data.message)
       },
       (error) => {
         toast.error(error.message)

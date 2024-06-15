@@ -55,6 +55,7 @@ import { ENTITY_TITLES } from "@/config/entities"
 
 const columns = [
   { columnKey: "titleId", label: "#" },
+  { columnKey: "titleCode", label: "Código" },
   { columnKey: "titleName", label: "Nombre" },
   { columnKey: "titleDescription", label: "Descripción" },
   { columnKey: "createdAt", label: "Creado" },
@@ -331,8 +332,11 @@ export default function TitleList() {
                           <TableCellLayout
                             media={<DocumentPageNumber24Regular />}
                           >
-                            {item.name}
+                            {item.cod_title}
                           </TableCellLayout>
+                        </TableCell>
+                        <TableCell>
+                          <TableCellLayout>{item.name}</TableCellLayout>
                         </TableCell>
                         <TableCell>
                           <TableCellLayout>{item.description}</TableCellLayout>

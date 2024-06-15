@@ -3,7 +3,8 @@ import { SET_USER_AUTH, REMOVE_USER_AUTH, SET_THEME_FLOW } from "./actions"
 export const userAuthDefault = {
   logged: false,
   userId: 0,
-  username: "",
+  userRol: "NONE",
+  userName: "",
   token: "",
 }
 

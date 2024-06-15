@@ -15,6 +15,7 @@ import {
   THEME_COLOR_PRODUCTIONS,
   THEME_COLOR_PRODUCTS,
 } from "./theme-color"
+import { ROLES_ENABLED } from "./access"
 
 const IconStyleCommon = {
   width: "24px",
@@ -33,6 +34,13 @@ const MenuList = [
     label: "Dashboard",
     path: "/",
     color: THEME_COLOR_DASHBOARD,
+    access: [
+      ROLES_ENABLED.ADMIN,
+      ROLES_ENABLED.SUPERVISOR,
+      ROLES_ENABLED.OPERATOR,
+      ROLES_ENABLED.RRHH,
+      ROLES_ENABLED.NONE,
+    ],
   },
   {
     icon: PeopleTeam48Regular,
@@ -45,6 +53,11 @@ const MenuList = [
     label: "Clientes",
     path: "/clientes",
     color: THEME_COLOR_CLIENTS,
+    access: [
+      ROLES_ENABLED.ADMIN,
+      ROLES_ENABLED.SUPERVISOR,
+      ROLES_ENABLED.OPERATOR,
+    ],
   },
   {
     hasChildren: true,
@@ -58,14 +71,47 @@ const MenuList = [
     label: "Producción",
     path: "/produccion",
     color: THEME_COLOR_PRODUCTIONS,
+    access: [
+      ROLES_ENABLED.ADMIN,
+      ROLES_ENABLED.SUPERVISOR,
+      ROLES_ENABLED.OPERATOR,
+    ],
     children: [
+      {
+        label: "Maquinaria",
+        path: "maquinarias",
+        access: [
+          ROLES_ENABLED.ADMIN,
+          ROLES_ENABLED.SUPERVISOR,
+          ROLES_ENABLED.OPERATOR,
+        ],
+      },
+      {
+        label: "Tintoreria",
+        path: "tintoreria",
+        access: [
+          ROLES_ENABLED.ADMIN,
+          ROLES_ENABLED.SUPERVISOR,
+          ROLES_ENABLED.OPERATOR,
+        ],
+      },
       {
         label: "Devanado",
         path: "devanado",
+        access: [
+          ROLES_ENABLED.ADMIN,
+          ROLES_ENABLED.SUPERVISOR,
+          ROLES_ENABLED.OPERATOR,
+        ],
       },
       {
         label: "Ovillado",
         path: "ovillado",
+        access: [
+          ROLES_ENABLED.ADMIN,
+          ROLES_ENABLED.SUPERVISOR,
+          ROLES_ENABLED.OPERATOR,
+        ],
       },
     ],
   },
@@ -78,18 +124,21 @@ const MenuList = [
     label: "Productos",
     path: "/productos",
     color: THEME_COLOR_PRODUCTS,
+    access: [
+      ROLES_ENABLED.ADMIN,
+      ROLES_ENABLED.SUPERVISOR,
+      ROLES_ENABLED.OPERATOR,
+    ],
     children: [
-      {
-        label: "Areas",
-        path: "areas",
-      },
       {
         label: "Colores",
         path: "colores",
+        access: [ROLES_ENABLED.ADMIN, ROLES_ENABLED.SUPERVISOR],
       },
       {
         label: "Titulos",
         path: "titulos",
+        access: [ROLES_ENABLED.ADMIN, ROLES_ENABLED.SUPERVISOR],
       },
     ],
   },
@@ -105,14 +154,25 @@ const MenuList = [
     label: "Operadores",
     path: "/operadores",
     color: THEME_COLOR_OPERATORS,
+    access: [ROLES_ENABLED.ADMIN, ROLES_ENABLED.SUPERVISOR, ROLES_ENABLED.RRHH],
     children: [
       {
         label: "Ocupaciones",
         path: "ocupaciones",
+        access: [
+          ROLES_ENABLED.ADMIN,
+          ROLES_ENABLED.SUPERVISOR,
+          ROLES_ENABLED.RRHH,
+        ],
       },
       {
         label: "Turnos",
         path: "turnos",
+        access: [
+          ROLES_ENABLED.ADMIN,
+          ROLES_ENABLED.SUPERVISOR,
+          ROLES_ENABLED.RRHH,
+        ],
       },
     ],
   },
@@ -127,6 +187,7 @@ const MenuList = [
     label: "Configuración",
     path: "/configuracion",
     color: THEME_COLOR_CONFIGURATIONS,
+    access: [ROLES_ENABLED.ADMIN, ROLES_ENABLED.SUPERVISOR],
   },
 ]
 
